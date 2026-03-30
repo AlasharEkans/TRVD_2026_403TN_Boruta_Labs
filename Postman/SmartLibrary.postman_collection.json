@@ -1,0 +1,43 @@
+{
+	"info": {
+		"name": "Smart Library API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Get All Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5000/api/books"
+					}
+				},
+				{
+					"name": "Get Book By ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:5000/api/books/1"
+					}
+				},
+				{
+					"name": "Create Book",
+					"request": {
+						"method": "POST",
+						"header": [
+							{ "key": "Content-Type", "value": "application/json" }
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Кобзар\",\n    \"isbn\": \"978-966-00-1234-5\",\n    \"publicationYear\": 1840\n}"
+						},
+						"url": "http://localhost:5000/api/books"
+					}
+				}
+			]
+		}
+	]
+}
