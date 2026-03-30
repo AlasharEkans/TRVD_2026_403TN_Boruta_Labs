@@ -1,11 +1,17 @@
 ﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using SmartLibrary.Api.DTOs;
 using SmartLibrary.Api.Entities;
 using SmartLibrary.Api.Repositories;
 using SmartLibrary.Api.Services;
+using SmartLibrary.Api.Data;
 
-public class BookService(IBookRepository repository, IMapper mapper) : IBookService
+public class BookService(IBookRepository repository, IMapper mapper, LibraryDbContext context) : IBookService
 {
+    private readonly LibraryDbContext _context = context;
+
+  
+
     public async Task<IEnumerable<BookDto>> GetAllBooksAsync()
     {
         var books = await repository.GetAllAsync();
@@ -32,5 +38,21 @@ public class BookService(IBookRepository repository, IMapper mapper) : IBookServ
 
         await repository.DeleteAsync(id);
         return true;
+    }
+
+    public async Task UpdateBookAsync(int id, Book book)
+    {
+        
+        var existingBook = await _context.Books.AnyAsync(b => b.Id == id);
+        if (!existingBook)
+        {
+            throw new KeyNotFoundException("Книгу не знайдено");
+        }
+
+        
+        _context.Entry(book).State = EntityState.Modified;
+
+        
+        await _context.SaveChangesAsync();
     }
 }

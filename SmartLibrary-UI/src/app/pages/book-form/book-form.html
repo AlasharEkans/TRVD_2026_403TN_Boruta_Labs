@@ -1,0 +1,32 @@
+<div style="max-width: 500px; margin: 0 auto;">
+  <h2 *ngIf="!isEditMode">Додати нову книгу</h2>
+<h2 *ngIf="isEditMode">Редагувати книгу</h2>
+<div *ngIf="isLoading">⏳ Завантаження даних...</div>
+  
+  <form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <div style="margin-bottom: 10px;">
+      <label>Назва книги:</label><br>
+      <input formControlName="title" type="text" style="width: 100%; padding: 8px;">
+    </div>
+    
+    <div style="margin-bottom: 10px;">
+      <label>ISBN:</label><br>
+      <input formControlName="isbn" type="text" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 10px;">
+      <label>Рік видання:</label><br>
+      <input formControlName="publicationYear" type="number" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <label>Опис:</label><br>
+      <textarea formControlName="description" rows="3" style="width: 100%; padding: 8px;"></textarea>
+    </div>
+
+    <button type="submit" [disabled]="bookForm.invalid" style="padding: 10px 20px; background: green; color: white; border: none; cursor: pointer;">
+      Зберегти
+    </button>
+    <a routerLink="/books" style="margin-left: 15px; color: grey;">Скасувати</a>
+  </form>
+</div>

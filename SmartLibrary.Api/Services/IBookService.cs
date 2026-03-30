@@ -12,5 +12,6 @@ public interface IBookService
     Task<BookDto> CreateBookAsync(CreateBookDto dto);
 
     Task<bool> DeleteBookAsync(int id);
+    Task UpdateBookAsync(int id, Book book);
 }
 
