@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SmartLibrary.Api.DTOs;
 using SmartLibrary.Api.Services;
 
 namespace SmartLibrary.Api.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class LoansController(ILoanService loanService) : ControllerBase

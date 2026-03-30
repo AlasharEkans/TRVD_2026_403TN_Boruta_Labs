@@ -24,4 +24,13 @@ public class BookService(IBookRepository repository, IMapper mapper) : IBookServ
         await repository.AddAsync(book);
         return mapper.Map<BookDto>(book);
     }
+
+    public async Task<bool> DeleteBookAsync(int id)
+    {
+        var book = await repository.GetByIdAsync(id);
+        if (book == null) return false;
+
+        await repository.DeleteAsync(id);
+        return true;
+    }
 }
