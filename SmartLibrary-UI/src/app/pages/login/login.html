@@ -1,0 +1,23 @@
+<div style="max-width: 400px; margin: 0 auto; border: 1px solid #ccc; padding: 20px; border-radius: 8px;">
+  <h2>Вхід в систему</h2>
+  
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <div style="margin-bottom: 10px;">
+      <label>Email:</label><br>
+      <input formControlName="email" type="email" style="width: 100%; padding: 8px;">
+    </div>
+    
+    <div style="margin-bottom: 15px;">
+      <label>Пароль:</label><br>
+      <input formControlName="password" type="password" style="width: 100%; padding: 8px;">
+    </div>
+
+    <div *ngIf="errorMessage" style="color: red; margin-bottom: 10px;">
+      {{ errorMessage }}
+    </div>
+
+    <button type="submit" [disabled]="loginForm.invalid" style="width: 100%; padding: 10px;">Увійти</button>
+  </form>
+
+  <p style="text-align: center; margin-top: 15px;">Немає акаунту? <a routerLink="/register">Зареєструватися</a></p>
+</div>

@@ -1,0 +1,14 @@
+<div *ngIf="isLoading">⏳ Завантаження деталей...</div>
+
+<div *ngIf="!isLoading && book" style="max-width: 600px; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
+  <h2>Деталі книги: {{ book.title }}</h2>
+  <hr>
+  <p><b>ID:</b> {{ book.id }}</p>
+  <p><b>ISBN:</b> {{ book.isbn }}</p>
+  <p><b>Рік видання:</b> {{ book.publicationYear }}</p>
+  <p><b>Опис:</b> {{ book.description || 'Опис відсутній' }}</p>
+  
+  <div style="margin-top: 20px;">
+    <a routerLink="/books" style="padding: 8px 15px; background: #6c757d; color: white; text-decoration: none; border-radius: 4px;">Назад до списку</a>
+  </div>
+</div>
