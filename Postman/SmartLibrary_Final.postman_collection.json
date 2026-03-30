@@ -1,0 +1,71 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d",
+		"name": "Smart Library API - Full",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Auth (Автентифікація)",
+			"item": [
+				{
+					"name": "Register (Реєстрація)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@library.com\",\n    \"password\": \"Admin123!\"\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": "https://localhost:5000/api/auth/register"
+					}
+				},
+				{
+					"name": "Login (Вхід)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"admin@library.com\",\n    \"password\": \"Admin123!\"\n}",
+							"options": { "raw": { "language": "json" } }
+						},
+						"url": "https://localhost:5000/api/auth/login"
+					}
+				}
+			]
+		},
+		{
+			"name": "Books (Книги)",
+			"item": [
+				{
+					"name": "Get All Books",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "https://localhost:5000/api/books"
+					}
+				},
+				{
+					"name": "Delete Book (Admin Only)",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "ВСТАВ_ТОКЕН_ТУТ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": "https://localhost:5000/api/books/1"
+					}
+				}
+			]
+		}
+	]
+}

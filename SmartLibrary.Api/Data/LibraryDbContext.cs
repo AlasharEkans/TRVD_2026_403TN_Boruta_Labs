@@ -10,6 +10,8 @@ public class LibraryDbContext : DbContext
     public DbSet<Book> Books => Set<Book>();
     public DbSet<Loan> Loans => Set<Loan>();
 
+    public DbSet<User> Users => Set<User>();
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Book>().HasIndex(b => b.ISBN).IsUnique();
